@@ -109,7 +109,7 @@ function check_available_space_sd () {
     available_space=$(sfdisk -F "$BOOT_DISK" | grep -o '[0-9]* bytes' | head -1 | awk '{print $1}')
  
     # Require at least 40 GB of available space.
-    if [ "$available_space" -lt  $(( (1<<30) * 32)) ]
+    if [ "$available_space" -lt  $(( (1<<30) * 20)) ]
     then
       setup_progress "STOP: The MicroSD card is too small: $available_space bytes available."
       setup_progress "$(parted "${BOOT_DISK}" print)"
