@@ -94,7 +94,7 @@ function check_available_space_sd () {
   if [ -e /dev/disk/by-label/backingfiles ] && [ -e /dev/disk/by-label/mutable ]
   then
     backingfiles_size=$(blockdev --getsize64 /dev/disk/by-label/backingfiles)
-    if [ "$backingfiles_size" -lt  $(( (1<<30) * 32)) ]
+    if [ "$backingfiles_size" -lt  $(( (1<<30) * 20)) ]
     then
       setup_progress "STOP: Existing backingfiles partition is too small"
       exit 1
